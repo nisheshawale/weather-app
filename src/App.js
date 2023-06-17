@@ -45,13 +45,9 @@ const MyMap = () => {
         const temperatures = weatherInfo.map((item) => item.temperature);
         const minTemp = Math.min(...temperatures);
         const maxTemp = Math.max(...temperatures);
-        // const t = (value - minTemp) / (maxTemperature - maxTemp);
-        console.log("WeatherInfo", weatherInfo);
-        console.log("Min", minTemp, "max", maxTemp);
 
         const weatherDataObj = _filteredStateNames.reduce(
           (acc, state, index) => {
-
             const _tempColor =
               (+weatherInfo[index].temperature - minTemp) /
               Math.max(1, maxTemp - minTemp);
@@ -72,8 +68,6 @@ const MyMap = () => {
           {}
         );
 
-        console.log("Data obj", weatherDataObj);
-
         setWeatherData(weatherDataObj);
         setLoading(false);
       } catch (error) {
@@ -82,13 +76,6 @@ const MyMap = () => {
     };
 
     fetchWeatherData();
-    try {
-      let _color = new Cesium.Color();
-      Cesium.Color.lerp(Cesium.Color.BLUE, Cesium.Color.RED, 1.0, _color);
-      console.log("color is ", _color);
-    } catch (e) {
-      console.log("lerp error", e);
-    }
   }, []);
 
   return !loading ? (

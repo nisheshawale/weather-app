@@ -11,11 +11,11 @@ This project was created in React using [Cesium](https://www.cesium.com/) and [R
 
 4. After following the installation method of craco-cesium, run
 
-        `npm install`
+        npm install
 
 5. After completion of the installation, run 
 
-        `npm start`
+        npm start
 
 ## Data
 1. Data for the polygon coordinates of different US states is taken from [kaggle](https://www.kaggle.com/datasets/pompelmo/usa-states-geojson).

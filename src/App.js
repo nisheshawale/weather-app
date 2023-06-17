@@ -7,8 +7,6 @@ import responses from "./responses";
 
 const MyMap = () => {
   const [weatherData, setWeatherData] = useState({});
-  // const [minTemperature, setMinTemperature] = useState(null);
-  // const [maxTemperature, setMaxTemperature] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,6 +21,7 @@ const MyMap = () => {
         const _filteredStateNames = stateNames.filter((e) =>
           Object.keys(responses).includes(e)
         );
+
         const weatherInfoPromises = _filteredStateNames.map(async (state) => {
           // uncomment this when using real api
           // const response = await axios.get(
@@ -38,6 +37,7 @@ const MyMap = () => {
             temperature: responses[state].main.temp,
             cloudCoverage: responses[state].clouds.all,
           };
+
         });
 
         const weatherInfo = await Promise.all(weatherInfoPromises);
@@ -51,7 +51,6 @@ const MyMap = () => {
 
         const weatherDataObj = _filteredStateNames.reduce(
           (acc, state, index) => {
-            // acc[state] = {...weatherInfo[index], "temp_color": Cesium.Color.lerp(Cesium.Color.BLUE, Cesium.Color.RED, (weatherInfo[index].temperature - minTemp) / (maxTemp - minTemp))};
 
             const _tempColor =
               (+weatherInfo[index].temperature - minTemp) /
@@ -95,10 +94,6 @@ const MyMap = () => {
   return !loading ? (
     <Viewer>
       {jsonData.map((eachJson, index) => {
-        // let tempValue = weatherData["Alaska"].temperature ?? 1;
-        // console.log(tempValue)
-        // let color = getColor(tempValue);
-
         if (
           weatherData[eachJson.properties.name]?.["temperature"] ===
             undefined ||
@@ -124,7 +119,6 @@ const MyMap = () => {
                   eachJson.geometry.coordinates[0].flat()
                 )}
                 material={weatherData[eachJson.properties.name]["temp_color"]}
-                // material={eachJson.temp_color}
               />
             </Entity>
           );

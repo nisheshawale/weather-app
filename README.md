@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Temperature and cloud coverage heatmap visualization of the US states
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created in React using [Cesium](https://www.cesium.com/) and [Resium](https://resium.reearth.io/).
 
-## Available Scripts
+![Demo](./public/demo.gif)
 
-In the project directory, you can run:
+## To run the project
 
-### `npm start`
+1. Install nodeJS
+2. To create-react-app, use [craco-cesium](https://github.com/reearth/craco-cesium)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. After following the installation method of craco-cesium, run
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+        `npm install`
 
-### `npm test`
+5. After completion of the installation, run 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+        `npm start`
 
-### `npm run build`
+## Data
+1. Data for the polygon coordinates of different US states is taken from [kaggle](https://www.kaggle.com/datasets/pompelmo/usa-states-geojson).
+2. Data for the temperature and cloud coverage of different US states is taken from [OpenWeather](https://openweathermap.org/api).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Note
+1. The API key used in this project is the free one. As the free API provides only [60 calls/minute](https://openweathermap.org/price), the temperature and cloud coverage data is also downloaded to ./src/responses.js.
+2. The polygon coordinates of different US states are also downloaded to *./src/us-states.js*.
+3. The current code takes the data from *./src/responses.js* and *./src/us-states.js* because of the free API call limitation. **To run the code with real time data from the API, uncomment line 18 and lines 27-33. Then, comment the lines 21-23 and lines 36-39**.
+4. During visualization, if you click on the particular state of the US, then the corresponding temperature and cloud coverage values of that state will pop up.
